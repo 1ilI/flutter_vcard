@@ -1,5 +1,6 @@
 library flutter_vcard;
 
+import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
@@ -169,6 +170,16 @@ class _VCardViewState extends State<VCardView> with TickerProviderStateMixin {
 
   // 垂直方向停止滑动事件，开始执行动画
   _onEndPanVerticalAnimation(DragEndDetails details) {
+    final halfOfHeight = widget.size.height * 0.5;
+    if (_pageOffsetY.abs() < halfOfHeight) {
+      double velocity =
+          details.velocity.pixelsPerSecond.dy / window.devicePixelRatio;
+      if (velocity < -halfOfHeight) {
+        _pageOffsetY = -halfOfHeight - 10;
+      } else if (velocity > halfOfHeight) {
+        _pageOffsetY = halfOfHeight + 10;
+      }
+    }
     _animation = _slideAnimation(_animationController, _pageOffsetY);
     _startSlideAnimation(_animation);
   }

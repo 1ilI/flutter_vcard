@@ -1,6 +1,6 @@
 name: flutter_vcard
-description: 一个垂直滑动的卡片堆叠控件
-version: 0.0.1
+description: 一个垂直滑动的卡片堆叠控件，A vertically sliding stack card 
+version: 0.0.2
 homepage: https://github.com/1ilI/flutter_vcard
 
 environment:
